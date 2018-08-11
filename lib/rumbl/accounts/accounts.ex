@@ -4,6 +4,7 @@ defmodule Rumbl.Accounts do
   """
 
   alias Rumbl.Accounts.User
+  alias Rumbl.Accounts.Credential
   alias Rumbl.Repo
 
   def change_user(%User{} = user) do
@@ -13,6 +14,12 @@ defmodule Rumbl.Accounts do
   def create_user(attrs \\ %{}) do
     %User{}
     |> User.changeset(attrs)
+    |> Repo.insert
+  end
+
+  def register_user(attrs \\ %{}) do
+    %User{}
+    |> User.registration_changeset(attrs)
     |> Repo.insert
   end
 
@@ -32,7 +39,6 @@ defmodule Rumbl.Accounts do
     Repo.all(User)
   end
 
-  alias Rumbl.Accounts.Credential
 
   @doc """
   Returns the list of credentials.
