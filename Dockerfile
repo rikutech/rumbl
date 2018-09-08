@@ -8,6 +8,11 @@ RUN apk update && \
     apk add --update\
     bash \
     alpine-sdk \
+    musl-dev \
+    gcc \
+    make \
+    g++ \
+    file \
     curl-dev \
     git \
     nodejs \
